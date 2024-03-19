@@ -1,0 +1,1 @@
+D:\proyecto-sinventario\Sistema-Inventario-PhpMysql-main\ProyectoReverdecer>sonar-scanner -Dsonar.login=squ_02d40e0816ddc4d3ff0ddc80df4a39521e466894 -Dsonar.projectKey=Inventario-PhpMysql-main
