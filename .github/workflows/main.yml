@@ -22,18 +22,7 @@ jobs:
         with:
           php-version: '8.0' # O la versión de PHP que necesites
 
-      - name: Change to directory with composer.json
-        run: cd ProyectoReverdecer/vistas/bower_components/select2/
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Cache Composer packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-
+     
       - name: Run SonarQube analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
