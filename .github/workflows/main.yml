@@ -19,8 +19,9 @@ jobs:
         uses: sonarsource/setup-sonarqube@v1
         with:
           sonar-qube-version: '>=8.0'
-          sonar-host-url: ${{ http://localhost:9000 }}
-          sonar-login: ${{ sqp_083069e589c2d04feaa2a3190b6cab2734db724e }}
+          sonar-host-url: http://localhost:9000
+          sonar-login: ${{ secrets.SONAR_TOKEN }}
+
 
       - name: Run SonarQube analysis
         run: sonar-scanner
