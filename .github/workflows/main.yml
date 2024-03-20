@@ -15,22 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup SonarQube Scanner
+        uses: sonarsource/setup-sonarqube@v1
         with:
-          php-version: '8.0' # O la versión de PHP que necesites
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Cache Composer packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          sonar-qube-version: '>=8.0'
+          sonar-host-url: ${{ http://localhost:9000 }}
+          sonar-login: ${{ sqp_083069e589c2d04feaa2a3190b6cab2734db724e }}
 
       - name: Run SonarQube analysis
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: sonar-scanner
