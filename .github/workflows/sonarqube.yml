@@ -1,0 +1,26 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarqube_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SonarQube Scanner
+        uses: sonarsource/setup-sonarqube@v1
+        with:
+          sonar-qube-version: '>=8.0'
+          sonar-host-url: ${{ secrets.SONAR_HOST_URL }}
+          sonar-login: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Run SonarQube analysis
+        run: sonar-scanner
