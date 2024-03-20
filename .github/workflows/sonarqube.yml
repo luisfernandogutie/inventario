@@ -2,8 +2,9 @@ name: SonarQube Analysis
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'ProyectoReverdecer/**'
+
   pull_request:
     types: [opened, synchronize, reopened]
 
